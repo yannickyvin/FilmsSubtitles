@@ -1,0 +1,17 @@
+th, td {
+  border-bottom: 1px solid #ddd;
+}
+
+.sortable {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: blue;
+}

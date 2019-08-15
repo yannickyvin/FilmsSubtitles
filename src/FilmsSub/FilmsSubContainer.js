@@ -125,6 +125,16 @@ class FilmsSubContainer extends React.Component {
     this.setState({subtitles: newsubs});
   }
 
+  sortByEpisode = (isAscOrdered) => {
+    let newsubs;
+    if (isAscOrdered) {
+      newsubs = this.state.subtitles.sort((a, b) => (parseInt(a.SeriesSeason)*100 + parseInt(a.SeriesEpisode)) - (parseInt(b.SeriesSeason)*100 + parseInt(b.SeriesEpisode)));
+    } else {
+      newsubs = this.state.subtitles.sort((a, b) => (parseInt(b.SeriesSeason)*100 + parseInt(b.SeriesEpisode)) - (parseInt(a.SeriesSeason)*100 + parseInt(a.SeriesEpisode)));
+    }
+    this.setState({subtitles: newsubs});
+  }
+
   handleChangeLanguage = (language) => {
     this.setState({
       language: language
@@ -139,6 +149,7 @@ class FilmsSubContainer extends React.Component {
           subtitles={this.state.subtitles}
           onClickTitleFilename={this.sortByFileName}
           onClickTitleDownloads={this.sortByDownloads}
+          onClickTitleEpisode={this.sortByEpisode}
         />
         <FilmsSubSearch
           searchText={this.state.searchText}
@@ -146,8 +157,8 @@ class FilmsSubContainer extends React.Component {
           onSubmitText={this.submitText}
           />
         <FilmsSubChooseLang 
-          onChangeLanguage={this.handleChangeLanguage}
           language={this.state.language}
+          onChangeLanguage={this.handleChangeLanguage}
           />
         <FilmsSubListMovies 
           results={this.state.results}

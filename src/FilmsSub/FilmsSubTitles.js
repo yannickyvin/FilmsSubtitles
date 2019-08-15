@@ -7,7 +7,8 @@ class FilmsSubTitles extends React.Component {
     super(props);
     this.state = {
       isFileNameAscOrdered : false,
-      isDownloadsAscOrdered : false
+      isDownloadsAscOrdered : false,
+      isEpisodesAscOrdered : false
     };
   }
   
@@ -23,6 +24,12 @@ class FilmsSubTitles extends React.Component {
     this.props.onClickTitleDownloads(isDownloadsAscOrdered);
   }
 
+  sortByEpisode = () => {
+    const isEpisodesAscOrdered = !this.state.isEpisodesAscOrdered;
+    this.setState({isEpisodesAscOrdered : isEpisodesAscOrdered});
+    this.props.onClickTitleEpisode(isEpisodesAscOrdered);
+  }
+
   render() {
 
 
@@ -32,6 +39,7 @@ class FilmsSubTitles extends React.Component {
         {this.props.subtitles.length > 0 && 
         <thead>
           <tr>
+            <th onClick={this.sortByEpisode} className="sortable">Episode</th>
             <th onClick={this.sortByFileName} className="sortable">FileName</th>
             <th onClick={this.sortByDownloads} className="sortable">Downloads</th>
           </tr>
@@ -40,6 +48,8 @@ class FilmsSubTitles extends React.Component {
         <tbody>
           {this.props.subtitles.map(sub => (
             <tr key={sub.IDSubtitleFile}>
+              
+              <td>{sub.SeriesSeason !== '0' ? `${sub.SeriesSeason}x${sub.SeriesEpisode}` : ''}</td>
               <td><a href={sub.SubDownloadLink}>{sub.SubFileName}</a></td>   
               <td>{sub.SubDownloadsCnt}</td>
             </tr>

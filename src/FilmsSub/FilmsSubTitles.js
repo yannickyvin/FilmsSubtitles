@@ -27,7 +27,7 @@ class FilmsSubTitles extends React.Component {
 
 
     return(
-      <table>
+      <table className="subtitles">
         
         {this.props.subtitles.length > 0 && 
         <thead>

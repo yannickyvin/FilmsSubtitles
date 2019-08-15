@@ -1,0 +1,16 @@
+.languages {
+  position: fixed;
+  top : 30px;
+  right: 30px;
+}
+
+.flag {
+  width: 52px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid rgba(197, 255, 209, 1);
+  border-radius: 3px;
+}

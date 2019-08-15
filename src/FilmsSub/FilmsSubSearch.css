@@ -1,3 +1,39 @@
 th, td {
   border-bottom: 1px solid #ddd;
 }
+
+.searchform {
+  margin: 1em 0;
+}
+
+input {
+  display: inline-block;
+  padding:0.46em 1.6em;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+}
+
+button {
+  display: inline-block;
+  padding:0.46em 1.6em;
+  border:0.1em solid #000000;
+  margin:0 0.2em 0.2em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#000000;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  background-color:#42cc8c;
+  text-align:center;
+  transition: all 0.15s;
+  }
+
+  button:hover{
+    text-shadow: 0 0 2em rgba(255,255,255,1);
+    color:#FFFFFF;
+    border-color:#FFFFFF;
+  }

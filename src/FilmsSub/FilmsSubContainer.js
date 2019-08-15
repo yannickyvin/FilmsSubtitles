@@ -25,7 +25,8 @@ class FilmsSubContainer extends React.Component {
 
   submitText = () => {
     this.setState({
-      results:[]
+      results:[],
+      subtitles: []
     });
 
     console.log('text: ', this.state.searchText);
@@ -41,10 +42,8 @@ class FilmsSubContainer extends React.Component {
         const res = searchResult.Search.slice(0, 4);
         this.setState({
           results: res.map((elt) => ({
-            title: elt.Title,
-            year: elt.Year,
-            id: elt.imdbID,
-            ratings: []
+            ...elt,
+            Ratings: []
           }))
         });
 
@@ -61,7 +60,7 @@ class FilmsSubContainer extends React.Component {
     let res = this.state.results.slice();
 
     res.forEach((film, index) => {
-      fetch(`http://www.omdbapi.com/?i=${film.id}&apikey=8f366aa`)
+      fetch(`http://www.omdbapi.com/?i=${film.imdbID}&apikey=8f366aa`)
       .then(response => {
         if (!response.ok) {
           console.log(response);
@@ -70,12 +69,9 @@ class FilmsSubContainer extends React.Component {
         return response.json();
       })
       .then(detail => {
-        const rated = detail.Rated;
-        const runtime = detail.Runtime;
-        const poster = detail.Poster;
-        const ratings = detail.Ratings;
-        const boxOffice = detail.BoxOffice;
-        res = res.map((elt) => elt.id === detail.imdbID ? {...film, rated, runtime, poster, ratings, boxOffice} : elt);
+        res = res.map((elt) => elt.imdbID === detail.imdbID ? detail : elt);
+        console.log('res details', res);
+
         this.setState({
           results: res
         });
@@ -129,10 +125,16 @@ class FilmsSubContainer extends React.Component {
     this.setState({subtitles: newsubs});
   }
 
+  handleChangeLanguage = (language) => {
+    this.setState({
+      language: language
+    });
+  }
+
   render() {
     return(
       <React.Fragment>
-        <h1>Search Movie / TV Show</h1>
+        <h1>Get Movie or TV Series Subtitles</h1>
         <FilmsSubTitles 
           subtitles={this.state.subtitles}
           onClickTitleFilename={this.sortByFileName}
@@ -144,7 +146,8 @@ class FilmsSubContainer extends React.Component {
           onSubmitText={this.submitText}
           />
         <FilmsSubChooseLang 
-          onChangeLang={this.handleChangeLanguage}
+          onChangeLanguage={this.handleChangeLanguage}
+          language={this.state.language}
           />
         <FilmsSubListMovies 
           results={this.state.results}

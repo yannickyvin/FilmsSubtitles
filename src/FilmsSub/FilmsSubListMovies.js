@@ -13,16 +13,13 @@ class FilmsSubListMovies extends React.Component {
     return(
       <div className="films">
         {this.props.results.map(film => (
-          <div className="film" key={film.id}>
-            <h3 className="titre">
-            {film.title}
-            </h3>
-            <h4>
-            {film.year}
-            </h4>
-            <FilmsSubRatings ratings={film.ratings.slice()} />
+          <div className="film" key={film.imdbID}>
+            <h3 className="titre">{film.Title}</h3>
+            <h4>{film.Year}</h4>
+            <div className={film.Type === 'movie' ? 'movie' : 'series'}>{film.Type}</div>
+            <FilmsSubRatings ratings={film.Ratings.slice()} />
 
-            <img className="poster" alt={film.title} src={film.poster} onClick={this.handleClickPoster.bind(this, film.id)}/>
+            <img className="poster" alt={film.Title} src={film.Poster} onClick={this.handleClickPoster.bind(this, film.imdbID)}/>
           </div>
         ))}
       </div>

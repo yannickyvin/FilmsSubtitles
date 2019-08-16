@@ -16,10 +16,11 @@ class FilmsSubListMovies extends React.Component {
           <div className="film" key={film.imdbID}>
             <h3 className="titre">{film.Title}</h3>
             <h4>{film.Year}</h4>
-            <div className={film.Type === 'movie' ? 'movie' : 'series'}>{film.Type}</div>
+            <div className={film.Type === 'movie' ? 'movie' : 'series'}>{`${film.Type} [${film.Rated}]`}</div>
+            <img className="poster" alt={film.Title} src={film.Poster} onClick={this.handleClickPoster.bind(this, film.imdbID)}/>
+            <div><a href={`https://www.imdb.com/title/${film.imdbID}/`} target="_blank"><img alt="" src="M_imdb.jpg"/></a></div>
             <FilmsSubRatings ratings={film.Ratings.slice()} />
 
-            <img className="poster" alt={film.Title} src={film.Poster} onClick={this.handleClickPoster.bind(this, film.imdbID)}/>
           </div>
         ))}
       </div>

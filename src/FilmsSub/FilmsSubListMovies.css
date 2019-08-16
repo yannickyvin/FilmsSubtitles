@@ -5,7 +5,7 @@
 
 .film {
   width: 300px;
-  height: 450px;
+  height: 500px;
   background-color: rgb(253, 250, 250);
   box-shadow: 2px 2px 2px grey;
   margin: 3px 6px;
@@ -24,9 +24,11 @@
 .movie {
   font-style: italic; 
   background-color: rgb(182, 182, 182);
+  margin-bottom: 10px;
 }
 
 .series {
   font-style: italic; 
   background-color: rgb(183, 202, 255);
+  margin-bottom: 10px;
 }

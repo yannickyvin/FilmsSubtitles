@@ -60,7 +60,7 @@ class FilmsSubContainer extends React.Component {
     let res = this.state.results.slice();
 
     res.forEach((film, index) => {
-      fetch(`http://www.omdbapi.com/?i=${film.imdbID}&apikey=8f366aa`)
+      fetch(`https://www.omdbapi.com/?i=${film.imdbID}&apikey=8f366aa`)
       .then(response => {
         if (!response.ok) {
           console.log(response);

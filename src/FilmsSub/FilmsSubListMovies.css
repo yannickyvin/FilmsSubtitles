@@ -1,6 +1,7 @@
 .films {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .film {
@@ -18,6 +19,7 @@
 
 .poster {
   width: 50%;
+  max-height: 450px;
   cursor: pointer;
 }
 

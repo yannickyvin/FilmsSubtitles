@@ -31,7 +31,7 @@ class FilmsSubContainer extends React.Component {
 
     console.log('text: ', this.state.searchText);
 
-    fetch(`http://www.omdbapi.com/?s=${this.state.searchText}&apikey=8f366aa`)
+    fetch(`https://www.omdbapi.com/?s=${this.state.searchText}&apikey=8f366aa`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch.');
